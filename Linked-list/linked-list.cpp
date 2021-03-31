@@ -156,6 +156,24 @@ void Insert(struct node *p, int position, int x)
 
 void InsertatLast(struct node *p, int x)
 {
+    struct node *new_node=new node;
+    struct node *last=new node;
+    new_node->data=x;
+    new_node->next=NULL;
+
+
+    if(first==NULL)//inserted node is first node only.
+    {
+        first=new_node;
+    }
+    else
+    {
+        while (last->next!=0)
+        {
+            last->next=new_node;
+            last=new_node;
+        }
+    }
 
 }
 
@@ -207,7 +225,7 @@ int Delete(struct node *p, int index)
 void SortedInsert(struct node *p, int x)
 {
     struct node *q=NULL;
-    struct node *t=NULL;
+    struct node *t;
 
     t=new node;
     t->data=x;
@@ -259,6 +277,7 @@ int main(){
    // IsSorted(first);
    //Delete(first, 3);
   //SortedInsert(first, 5); 
+  InsertatLast(first, 60);
  display(first);
    
     
