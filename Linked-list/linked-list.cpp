@@ -111,45 +111,156 @@ int RecursiveMax(struct node *p)
     
     
 }
-/*
-void Insert(int position, int x)
+
+struct node * search(struct node *p, int key)// return type is pointer to node coz we r returning p. 
 {
-    node *t, *p;
-    if(position==0)//inserting at the starting
+   struct node *q;//previous node
+    while (p!=0)
     {
+        if(key==p->data)
+       {
+        q->next=p->next;//moving q behind p
+        p->next=first;
+        first=p;
+        return p;
+       } 
+    q=p;
+    p=p->next; 
+    }
+    return NULL;  
+}
+
+
+void Insert(struct node *p, int position, int x)
+{
+   struct  node *t;
+    if(position < 0 || position >count(p))//checking for negative position
+        return;
         t=new node;
         t->data=x;
-        t->next=first;
+    if(position==0)//inserting at the starting
+     {  
+          t->next=first;
         first=t;
     }
 
-    else if(position>0)//inserting after given position
+    else//inserting after given position
     {
-        p=first;
-    }
-    for(int i=0;i<position-1 && p;i++)
-    
+    for(int i=0;i<position-1;i++)
         p=p->next;
-    if(p)
-    {
-        t=new node;
-        t->data=x;
-        t->next=p->next;
-        p->next=t;
+
+    t->next=p->next;
+    p->next=t;
     }
 }
-*/
+
+void InsertatLast(struct node *p, int x)
+{
+
+}
+
+int IsSorted(struct node *p)
+{
+    int x=INT32_MIN;
+    while (p!=0)
+    {
+        if(p->data<x)
+        return 0;
+        x=p->data;
+        p=p->next;
+    }
+        return 1;
+    
+}
+
+int Delete(struct node *p, int index)
+{
+    struct node *q;
+    int x=-1;
+
+    if(index <1 || index > count(p))
+    return -1;
+
+    if(index==1)//deleting from first index
+    {
+        q=first;
+        x=first->data;
+        first=first->next;
+        delete q;
+        return x;
+    }
+
+    else
+    {
+        for(int i =0;i<index;i++)
+        {
+            q=p;
+            p=p->next;
+        }
+        q->next=p->next;
+        x=p->data;
+        delete p;
+        return x;
+    }
+}
+
+void SortedInsert(struct node *p, int x)
+{
+    struct node *q=NULL;
+    struct node *t=NULL;
+
+    t=new node;
+    t->data=x;
+    t->next=NULL;
+
+    if(first==NULL)
+    first=t;
+
+    else 
+    {
+        while (p && p->data<x)
+        {
+            p=q;
+            p=p->next;
+        }
+        if(p==first)
+        {
+        t->next=first; 
+        first=t;
+        }
+
+        else
+        {
+        t->next=q->next;
+        q->next=t;
+
+        }
+    }
+
+}
+
+
 int main(){
+    struct node *temp;
     int A[]={10,20,30,40,50}; 
     create(A,5);
-    cout<<"count = "<<count(first)<<endl;   
-    cout<<"count = "<<RecursiveCount(first)<<endl;
-    cout<<"sum of linked list is = "<<sum(first)<<endl;
-    cout<<"sum of linked list is = "<<RecursiveSum(first)<<endl;
-    cout<<"maximum element is ="<<max(first)<<endl;
-    cout<<"maximum element is ="<<RecursiveMax(first)<<endl;
+    //cout<<"count = "<<count(first)<<endl;   
+    //cout<<"count = "<<RecursiveCount(first)<<endl;
+    //cout<<"sum of linked list is = "<<sum(first)<<endl;
+    //cout<<"sum of linked list is = "<<RecursiveSum(first)<<endl;
+    //cout<<"maximum element is ="<<max(first)<<endl;
+    //cout<<"maximum element is ="<<RecursiveMax(first)<<endl;
     display(first);
-    RecursiveDisplay(first);
-
+   //RecursiveDisplay(first);
+   //temp=search(first, 30);
+   //cout<<endl<<temp->data;
+   //Insert(first,0,15);
+   cout<<endl;
+   // IsSorted(first);
+   //Delete(first, 3);
+  //SortedInsert(first, 5); 
+ display(first);
+   
+    
 return 0;
 };
