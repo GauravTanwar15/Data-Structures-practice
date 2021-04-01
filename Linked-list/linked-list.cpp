@@ -154,27 +154,25 @@ void Insert(struct node *p, int position, int x)
     }
 }
 
-void InsertatLast(struct node *p, int x)
+void InsertatLast(struct node *p,  int x)
 {
     struct node *new_node=new node;
-    struct node *last=new node;
+    struct node *last_node=new node;
+
     new_node->data=x;
     new_node->next=NULL;
 
-
-    if(first==NULL)//inserted node is first node only.
+    if(first==NULL)//if inserting node is the first node only.
     {
-        first=new_node;
+        first=last_node=new_node;
     }
+
     else
     {
-        while (last->next!=0)
-        {
-            last->next=new_node;
-            last=new_node;
-        }
+        last_node=new_node;
+        last_node->next=new_node;
+      
     }
-
 }
 
 int IsSorted(struct node *p)
@@ -268,16 +266,19 @@ int main(){
     //cout<<"sum of linked list is = "<<RecursiveSum(first)<<endl;
     //cout<<"maximum element is ="<<max(first)<<endl;
     //cout<<"maximum element is ="<<RecursiveMax(first)<<endl;
-    display(first);
+    //display(first);
    //RecursiveDisplay(first);
    //temp=search(first, 30);
    //cout<<endl<<temp->data;
    //Insert(first,0,15);
-   cout<<endl;
+   //Insert(first,0,30);
+   //Insert(first,0,45);
+   //Insert(first,1,60);
+  cout<<endl;
    // IsSorted(first);
    //Delete(first, 3);
   //SortedInsert(first, 5); 
-  InsertatLast(first, 60);
+  //InsertatLast(first, 7);
  display(first);
    
     
