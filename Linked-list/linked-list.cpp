@@ -259,11 +259,77 @@ void SortedInsert(struct node *p, int x)
 
 }
 
+void duplicate(struct node *p)
+{
+    struct node *q=first->next;
+
+    while(q!=0)
+    {
+        if(p->data!= q->data)
+        {
+            p=q;
+            q=q->next;
+        }
+        else
+        {
+            p->next=q->next;
+            delete q;
+        }     q=p->next;
+    }
+}
+
+void reverse_element(struct node *p)
+{
+    int *B=new int[7], i=0;
+    struct node *q=p;
+    while(q!=0)
+    {
+        B[i]=q->data;
+        q=q->next;
+        i++;
+    }
+    q=p;
+    i--;
+    while(q!=0)
+    {
+        q->data=B[i];
+        q=q->next;
+        i--;
+    }
+    
+}
+
+void reverse_link(struct node *p)
+{
+    struct node *q=NULL;//sliding pointer 1
+    struct node *r=NULL;//sliding pointer 2
+
+    while(p!=NULL)
+    {
+        r=q;//moving r
+        q=p;//moving q
+        p=p->next;//moving p
+        q->next=r;//reversing
+    }
+    first=q;//making last node as first
+}
+
+void recursive_reverse(struct node * q, struct node * p)
+{
+    if(p!=NULL)
+    {
+        recursive_reverse(p, p->next);
+        p->next=q;
+    }
+    else
+    first=q;
+}
 
 int main(){
     //struct node *temp;
-    //int A[]={10,20,30,40,50}; 
-    //create(A,5);
+    int A[]={10,20,30,40,40,50,50}; 
+    create(A,7);
+    display(first);
     //cout<<"count = "<<count(first)<<endl;   
     //cout<<"count = "<<RecursiveCount(first)<<endl;
     //cout<<"sum of linked list is = "<<sum(first)<<endl;
@@ -278,14 +344,18 @@ int main(){
    //Insert(first,0,30);
    //Insert(first,0,45);
    //Insert(first,1,60);
-  cout<<endl;
    // IsSorted(first);
    //Delete(first, 3);
   //SortedInsert(first, 5); 
-  InsertatLast(first, 6);
-  InsertatLast(first, 7);
-  InsertatLast(first, 8);
-  InsertatLast(first, 9);
+  //InsertatLast(first, 6);
+  //InsertatLast(first, 7);
+  //InsertatLast(first, 8);
+  //InsertatLast(first, 9);
+  //duplicate(first);
+  cout<<endl;
+  //reverse_element(first);
+  //reverse_link(first);
+  recursive_reverse(NULL,first);
  display(first);
    
     
