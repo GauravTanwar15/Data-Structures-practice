@@ -156,21 +156,25 @@ void Insert(struct node *p, int position, int x)
 
 void InsertatLast(struct node *p,  int x)
 {
+    struct node * temp;
     struct node *new_node=new node;
-    struct node *last_node=new node;
 
     new_node->data=x;
     new_node->next=NULL;
 
     if(first==NULL)//if inserting node is the first node only.
     {
-        first=last_node=new_node;
+        first=new_node;
     }
 
-    else
-    {
-        last_node=new_node;
-        last_node->next=new_node;
+    else// inserting at end always
+    {   temp=first;
+      while(temp->next!=0)
+      {
+          temp=temp->next;
+      } 
+            temp->next=new_node;
+            temp=new_node;
       
     }
 }
@@ -257,9 +261,9 @@ void SortedInsert(struct node *p, int x)
 
 
 int main(){
-    struct node *temp;
-    int A[]={10,20,30,40,50}; 
-    create(A,5);
+    //struct node *temp;
+    //int A[]={10,20,30,40,50}; 
+    //create(A,5);
     //cout<<"count = "<<count(first)<<endl;   
     //cout<<"count = "<<RecursiveCount(first)<<endl;
     //cout<<"sum of linked list is = "<<sum(first)<<endl;
@@ -278,7 +282,10 @@ int main(){
    // IsSorted(first);
    //Delete(first, 3);
   //SortedInsert(first, 5); 
-  //InsertatLast(first, 7);
+  InsertatLast(first, 6);
+  InsertatLast(first, 7);
+  InsertatLast(first, 8);
+  InsertatLast(first, 9);
  display(first);
    
     
