@@ -355,7 +355,7 @@ int main(){
   cout<<endl;
   //reverse_element(first);
   //reverse_link(first);
-  recursive_reverse(NULL,first);
+  // recursive_reverse(NULL,first);
  display(first);
    
     
