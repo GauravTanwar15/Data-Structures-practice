@@ -398,6 +398,24 @@ void merge(struct node *p, struct node *q)
         last->next=q;
 
 }
+
+int IsLoop(struct node *f)
+{
+    struct node *p, *q;
+    p=q=f;
+    do
+    {
+        p=p->next;
+        q=q->next;
+        q!=q?q->next:q;
+    } while (p && q && p!=q);
+
+    if(p==q)
+    return 1;
+    else
+     return 0;
+    
+}
 int main(){
     //struct node *temp;
     int A[]={10,20,30,40,50}; 
@@ -435,10 +453,13 @@ int main(){
  //cout<<endl;
  //cout<<"Linkedlist after concatinating:"<<endl;
  //concat(first,second);
- merge(first,second);
- cout<<"Linkedlist after merging:"<<endl;
- display(third);
-   
-    
+ //merge(first,second);
+ //cout<<"Linkedlist after merging:"<<endl;
+ //display(third);
+ //struct node *t1, *t2;
+//t1=first->next->next;//pointing to 30
+ //t2=first->next->next->next->next;//pointing to 50
+ //t2->next=t1; //55 poining to 30 again
+ //printf("%d\n", IsLoop(first));
 return 0;
 };
