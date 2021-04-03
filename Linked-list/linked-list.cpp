@@ -4,9 +4,9 @@ struct node
 {
     int data;
     struct node *next;// pointer of type struct
-}*first = NULL;
+}*first = NULL,*second = NULL, *third = NULL;
 
-void create(int A[], int element)
+void createA(int A[], int element)
 {
     struct node *t, *last;
     first = new node;
@@ -18,6 +18,24 @@ void create(int A[], int element)
     {
         t=new node;
         t->data=A[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+
+void createB(int B[], int element)
+{
+    struct node *t, *last;
+    second = new node;
+    second->data=B[0];
+    second->next=NULL;
+    last=second;
+
+    for (int i = 1; i < element; i++)
+    {
+        t=new node;
+        t->data=B[i];
         t->next=NULL;
         last->next=t;
         last=t;
@@ -325,11 +343,70 @@ void recursive_reverse(struct node * q, struct node * p)
     first=q;
 }
 
+void concat(struct node *p, struct node *q)
+{
+    third=p;
+
+    while(p->next!=NULL)
+    {
+        p=p->next;
+    }
+    p->next=q;
+    //deleting pointer second after concatinating
+}
+
+void merge(struct node *p, struct node *q)
+{
+    struct node *last;
+
+    if(p->data < q->data)
+    {
+        third=last=p;
+        p=p->next;
+        last->next=NULL;
+    }
+
+    else
+    {
+        third=last=q;
+        q=q->next;
+        last->next=NULL;
+    }
+
+    while(p!=NULL && q!=NULL)
+    {
+        if(p->data < q->data)
+        {
+            last->next=p;
+            last=p;
+            p=p->next;
+            last->next=NULL;
+        }
+        else
+        {
+            last->next=q;
+            last=q;
+            q=q->next;
+            last->next=NULL;
+        }
+    }
+
+    if(p!=NULL)
+        last->next=p;
+
+    else
+        last->next=q;
+
+}
 int main(){
     //struct node *temp;
-    int A[]={10,20,30,40,40,50,50}; 
-    create(A,7);
-    display(first);
+    int A[]={10,20,30,40,50}; 
+    createA(A,5);
+    int B[]={60,70,80,90,100}; 
+    createB(B,5);
+   // display(first);
+    //cout<<endl;
+    //display(second);
     //cout<<"count = "<<count(first)<<endl;   
     //cout<<"count = "<<RecursiveCount(first)<<endl;
     //cout<<"sum of linked list is = "<<sum(first)<<endl;
@@ -352,11 +429,15 @@ int main(){
   //InsertatLast(first, 8);
   //InsertatLast(first, 9);
   //duplicate(first);
-  cout<<endl;
   //reverse_element(first);
   //reverse_link(first);
   // recursive_reverse(NULL,first);
- display(first);
+ //cout<<endl;
+ //cout<<"Linkedlist after concatinating:"<<endl;
+ //concat(first,second);
+ merge(first,second);
+ cout<<"Linkedlist after merging:"<<endl;
+ display(third);
    
     
 return 0;
