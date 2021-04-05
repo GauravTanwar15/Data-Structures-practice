@@ -81,13 +81,45 @@ void Insert(struct node *p, int index, int x)
         
     }
 }
+int Delete(struct node *p, int index)
+{
+    int x=-1,i;
+    if(index<1 || index >count(p))
+        return -1;
+    if(index==1)
+    {
+        first=first->next;
+        if(first!=NULL)
+        first->prev=NULL;
+        x=p->data;
+        delete p;
+    }
+    else
+    {
+        for ( i = 0; i < index-1; i++)
+        {
+            p=p->next;
+        }
+
+        p->prev->next=p->next;
+        if(p->next!=NULL)
+            p->next->prev=p->next;
+
+        x=p->data;
+        delete p;
+    }  
+
+    return x; 
+        
+}
 int main(){
     int A[]={10,20,30,40,50};
     create(A,5);
     display(first);
     //Insert(first,0,5);
     cout<<endl;
+    cout<<"deleted element is: "<<Delete(first,1)<<endl;
+    cout<<"update linked list"<<endl;
     display(first);
-
 return 0;
 }
