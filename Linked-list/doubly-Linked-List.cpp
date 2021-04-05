@@ -5,13 +5,13 @@ struct node
     int data;
     struct node *prev;
     struct node *next;
-}*first;
+}*first=NULL;
 void create(int A[], int element)
 {
     struct node *t, *last;
     first = new node;
     first->data=A[0];
-    first->next=NULL;
+    first->next=first->prev=NULL;
     last=first;
 
     for (int i = 1; i < element; i++)
@@ -19,7 +19,8 @@ void create(int A[], int element)
         t=new node;
         t->prev=NULL;
         t->data=A[i];
-        t->next=NULL;
+        t->next=last->next;
+        t->prev=last;
         last->next=t;
         last=t;
     }
