@@ -112,14 +112,31 @@ int Delete(struct node *p, int index)
     return x; 
         
 }
+
+void Reverse(struct node *p)
+{
+    struct node *temp;
+
+    while(p!=NULL)
+    {
+        temp=p->next;
+        p->next=p->prev;
+        p->prev=temp;
+        p=p->prev;
+        if(p!=NULL && p->next==NULL)
+            first=p;
+        
+    }
+}
 int main(){
     int A[]={10,20,30,40,50};
     create(A,5);
-    display(first);
+    //display(first);
+    //cout<<endl;
     //Insert(first,0,5);
-    cout<<endl;
-    cout<<"deleted element is: "<<Delete(first,1)<<endl;
-    cout<<"update linked list"<<endl;
+    //cout<<"deleted element is: "<<Delete(first,1)<<endl;
+    //cout<<"update linked list"<<endl;
+    Reverse(first);
     display(first);
 return 0;
 }
