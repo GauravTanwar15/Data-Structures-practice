@@ -1,18 +1,18 @@
-#include <iostream>
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-using namespace std;
+
 struct node{
     char data;
-    node *next;
+   struct node *next;
 }*top=NULL;
 
 void push(char x)
 {
     struct node *t;
-    t=new node;
+    t=(struct node*)malloc(sizeof(struct node));
     if (t==NULL)
-    cout<<"stack full"<<endl;
+    printf("stack is full\n");
     else
     {
         t->data=x;
@@ -26,14 +26,14 @@ int pop()
     char x=-1;
     struct node *t;
     if(top==NULL)
-    cout<<"stack empty"<<endl;
+    printf("stack is empty\n");
 
     else
     {
         t=top;
         top=top->next;
         x=t->data;
-        delete t; 
+        free (t); 
     }
 
     return x;
@@ -45,10 +45,10 @@ void Display()
        p=top;
     while(p)
     {
-        cout<<p->data;
+        printf("%d ",p->data);
         p=p->next;
-        cout<<" "<<endl;
     }
+    printf("\n");
 }
 
 int isBalanced(char *exp)
@@ -58,12 +58,12 @@ int isBalanced(char *exp)
  for(i=0;exp[i]!='\0';i++)
  {
  if(exp[i]=='(')
- push(exp[i]);
+    push(exp[i]);
  else if(exp[i]==')')
  {
- if(top==NULL)
- return 0;
- pop();
+    if(top==NULL)
+         return 0;
+     pop();
  }
  }
  if(top==NULL)
@@ -100,7 +100,7 @@ char * InfixtoPostfix(char *infix)
     while(infix[i]!='\0')
     {
         if(Isoperand(infix[i]))
-            postfix[i++]=infix[i++];
+            postfix[j++]=infix[i++];
         else
         {
             if(precedence(infix[i])>precedence(top->data))
@@ -120,11 +120,9 @@ char * InfixtoPostfix(char *infix)
     postfix[j]='\0';
     
     return postfix;
-
-
 }
 int main(){
-    char  *infix= strdup("a+b*c-d/e");
+    char  *infix= "a+b*c-d/e";
     push('#');// so stack don't give empty stack warning
     
     char *postfix=InfixtoPostfix(infix);
