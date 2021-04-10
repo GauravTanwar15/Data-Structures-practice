@@ -1,11 +1,13 @@
 #include <iostream>
+#include <stdlib.h>
+#include <string.h>
 using namespace std;
 struct node{
-    int data;
+    char data;
     node *next;
 }*top=NULL;
 
-void push(int x)
+void push(char x)
 {
     struct node *t;
     t=new node;
@@ -19,9 +21,9 @@ void push(int x)
     }
 }
 
-int pop()
+char pop()
 {
-    int x=-1;
+    char x=-1;
     struct node *t;
     if(top==NULL)
     cout<<"stack empty"<<endl;
@@ -49,28 +51,30 @@ void Display()
     }
 }
 
-int evaluation(char *postfix)
+int IsBalanaced(char *exp)
 {
-    int i=0;
-    int x1,x2,result;
-
-    for ( i = 0; postfix[i]!='\0'; i++)
+   
+    for (int i = 0; exp[i]!='\0'; i++) //accessing through string
     {
-        if ((postfix[i]))
+        if(exp[i]=='(')
+            push(exp[i]);
+        else if(exp[i]==')')
         {
-            /* code */
+            if(top==NULL)
+                return 0;
+            pop();
         }
-        
     }
+    if(top==NULL)
+        return 1;
+    else
+        return 0;
     
 }
 
 int main(){
-    ;
-    
-    Display();
-
-    cout<<"poped element is:"<<pop();
+    char *exp=strdup("((a+b)*(c-d))");
+    printf("%d ",IsBalanaced(exp));
 
 return 0;
 }
