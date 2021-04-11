@@ -12,7 +12,7 @@ void create(struct Queue *q,int size)
 {
     q->size=size;
     q->front=q->rear=-1;
-    q->Q= new int [q->size];
+    q->Q= new int [size];
 }
 
 void Enqueue(struct Queue *q, int x)
@@ -59,7 +59,7 @@ int main(){
   
     Display(q);
     cout<<"Deleted element is: "<<Dequeue(&q);
-
+    Display(q);
     
     
 
