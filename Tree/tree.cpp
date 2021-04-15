@@ -76,4 +76,4 @@ void Postorder(struct Node *p)
  Postorder(root);
  
  return 0;
-}
+};

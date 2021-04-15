@@ -1,4 +1,5 @@
-
+#ifndef Queue_h
+#define Queue_h
 struct Node
 {
  struct Node *lchild;
@@ -44,3 +45,7 @@ struct Node * dequeue(struct Queue *q)
 int isEmpty(struct Queue q)
 {
  return q.front==q.rear;
+
+}
+
+ #endif
