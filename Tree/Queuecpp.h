@@ -1,39 +1,43 @@
-#ifndef Queue_h
-#define Queue_h
-#include <iostream>
-#include <stdlib.h>
 #include <stdio.h>
-using namespace std;
+#ifndef Queuecpp_h
+#define Queuecpp_h
+class Node //Node of a tree
+{
+    public:
+        Node *lchild;
+        int data;
+        Node *rchild;
+};
 class Queue
 {
 private:
     int front;
     int rear;
     int size;
-    int *Q;
+    Node **Q;
 public:
     Queue()
     {
         front=rear=-1;
         size=10;
-        Q=new int [size];
+        Q=new Node *[size];
     }
     Queue(int size)
     {
         front=rear=11;
         this->size=size;
-        Q=new int [this->size];
+        Q=new Node* [this->size];
     }
 
-    void Enqueue(int x);
-    int Dequeue();
+    void Enqueue(Node* x);
+    Node* Dequeue();
     void Display();
 };
 
-void Queue :: Enqueue(int x)
+void Queue :: Enqueue(Node *x)
 {
     if(rear==size-1)
-        cout<<"Queue id full";
+        printf("Queue id full\n");
     else
     {
         rear++;
@@ -41,11 +45,11 @@ void Queue :: Enqueue(int x)
     }   
 }
 
-int Queue :: Dequeue()
+Node* Queue :: Dequeue()
 {
-    int x=-1;
+    Node* x=NULL;
     if(rear==front)
-        cout<<"Queue is empty";
+        printf("Queue is empty\n");
     else
     {
         x=Q[front+1];
@@ -54,20 +58,4 @@ int Queue :: Dequeue()
     return x; 
 }
 
-void Queue :: Display()
-{
-    for(int i=front+1;i<=rear;i++)
-    cout<<Q[i]<<" ";
-    cout<<"\n";
-}
-int main(){
-    Queue q(5);
-    q.Enqueue(5);
-    q.Enqueue(15);
-    q.Enqueue(25);
-    q.Display();
-    cout<<"Deleted element is: "<<q.Dequeue();
-    
-return 0;
-}
 #endif
