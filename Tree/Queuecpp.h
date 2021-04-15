@@ -29,15 +29,15 @@ public:
         Q=new Node* [this->size];
     }
 
-    void Enqueue(Node* x);
-    Node* Dequeue();
-    void Display();
+    void enqueue(Node* x);
+    Node* dequeue();
+    int isEmpty(){return front==rear;}
 };
 
-void Queue :: Enqueue(Node *x)
+void Queue :: enqueue(Node *x)
 {
     if(rear==size-1)
-        printf("Queue id full\n");
+        printf("Queue is full\n");
     else
     {
         rear++;
@@ -45,7 +45,7 @@ void Queue :: Enqueue(Node *x)
     }   
 }
 
-Node* Queue :: Dequeue()
+Node* Queue :: dequeue()
 {
     Node* x=NULL;
     if(rear==front)

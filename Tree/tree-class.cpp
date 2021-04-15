@@ -1,4 +1,3 @@
-Binary Tree Class
 #include <iostream>
 #include<stdio.h>
 #include "QueueCpp.h"
@@ -130,3 +129,4 @@ int main()
  cout<<endl<<endl;
  
  return 0;
+};
