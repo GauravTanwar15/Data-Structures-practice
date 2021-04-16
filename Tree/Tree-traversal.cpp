@@ -45,39 +45,39 @@ Node));
 }
 void IPreorder(struct Node *p)
 {
- struct Stack st;
- create(&st,100);
+ struct Stack stk;
+ Stackcreate(&stk,100);
  
- while(p || !Isempty(st))
+ while(p || !isemptyStack(stk))
  {
  if(p)
  {
  printf("%d ",p->data);
- push(&st,p);
+ push(&stk,p);
  p=p->lchild;
  }
  else
  {
- p=pop(&st);
+ p=pop(&stk);
  p=p->rchild;
  }
  }
 }
 void IInorder(struct Node *p)
 {
- struct Stack st;
- Stackcreate(&st,100);
+ struct Stack stk;
+ Stackcreate(&stk,100);
  
- while(p || Isempty(st))
+ while(p || isemptyStack(stk))
  {
  if(p)
  {
- push(&st,p);
+ push(&stk,p);
  p=p->lchild;
  }
  else
  {
- p=pop(&st);
+ p=pop(&stk);
  printf("%d ",p->data);
  p=p->rchild;
  }
@@ -86,7 +86,7 @@ void IInorder(struct Node *p)
 int main(){
  Treecreate();
  
- IPreOrder(root); 
+ IPreorder(root);
  IInorder(root);
  return 0;
 }

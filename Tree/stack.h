@@ -1,7 +1,8 @@
-#include "Query.h"
+#include "Queue.h"
 #ifndef stack_h
 #define stack_h
-#include <stdio.h>>
+#include <stdio.h>
+#include <stdlib.h>
 struct Stack
 {
     int size;
