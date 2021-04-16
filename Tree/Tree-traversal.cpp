@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Queue.h"
+#include "stack.h"
 struct Node *root=NULL;
 void Treecreate()
 {
@@ -42,38 +43,50 @@ Node));
  }
  }
 }
-void Preorder(struct Node *p)
+void IPreorder(struct Node *p)
 {
- if(p)
- {
- printf("%d ",p->data);
- Preorder(p->lchild);
- Preorder(p->rchild);
- }
-}
-void Inorder(struct Node *p)
-{
- if(p)
- {
- Inorder(p->lchild);
- printf("%d ",p->data);
- Inorder(p->rchild);
- }
-}
-void Postorder(struct Node *p)
-{
- if(p)
- {
- Postorder(p->lchild);
- Postorder(p->rchild);
- printf("%d ",p->data);
- }
-}int main()
-{
- Treecreate();
- Preorder(root);
- printf("\nPost Order ");
- Postorder(root);
+ struct Stack st;
+ create(&st,100);
  
+ while(p || !Isempty(st))
+ {
+ if(p)
+ {
+ printf("%d ",p->data);
+ push(&st,p);
+ p=p->lchild;
+ }
+ else
+ {
+ p=pop(&st);
+ p=p->rchild;
+ }
+ }
+}
+void IInorder(struct Node *p)
+{
+ struct Stack st;
+ Stackcreate(&st,100);
+ 
+ while(p || Isempty(st))
+ {
+ if(p)
+ {
+ push(&st,p);
+ p=p->lchild;
+ }
+ else
+ {
+ p=pop(&st);
+ printf("%d ",p->data);
+ p=p->rchild;
+ }
+ }
+}
+int main(){
+ Treecreate();
+ 
+ IPreOrder(root); 
+ IInorder(root);
  return 0;
-};
+}

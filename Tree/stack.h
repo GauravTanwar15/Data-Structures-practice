@@ -1,33 +1,26 @@
-#include <iostream>
-using namespace std;
-struct stack
-
+#include "Query.h"
+#ifndef stack_h
+#define stack_h
+#include <stdio.h>>
+struct Stack
 {
     int size;
     int top;
-    int *S;
+    struct Node **S;
 };
 
-void create(struct stack *st)
+void Stackcreate(struct Stack *st, int size)
 {
-    printf("enter size: ");
-    scanf("%d",&st->size);
+    st->size=size;
     st->top=-1;
-    st->S= new int[st->size]; 
+    st->S= (struct Node **)malloc(st->size*sizeof(struct Node *)); 
     
 }
-void Display(struct stack st)
-{
-    int i;
-    for(i=st.top;i>=0;i--)
-    cout<<st.S[i]<<" ";
-    cout<<"\n";
-}
 
-void push(struct stack *st, int x)
+void push(struct Stack *st, struct Node *x)
 {
     if(st->top==st->size-1)
-    cout<<"stack overflow"<<"\n";
+    printf("stack overflow\n");
     else
     {
         st->top++;
@@ -35,11 +28,11 @@ void push(struct stack *st, int x)
     } 
 }
 
-int pop(struct stack *st)
+struct Node *pop(struct Stack *st)
 {
-    int x=-1;
+    struct Node *x=NULL;
     if(st->top==-1)
-    cout<<"stack empty"<<endl;
+    printf("stack is empty\n");
     else
     {
         x=st->S[st->top];
@@ -47,56 +40,18 @@ int pop(struct stack *st)
     }
     return x;
 }
-
-int peek(struct stack st, int pos)
-{
-    int x=-1;
-    if(st.top-pos+1<0)
-    cout<<"Invalid";
-    else
-    {
-        x=st.S[st.top-pos+1];   
-    }
-
-    return x;
-    
-}
-
-int stacktop(stack st)
-{
-    if(st.top==-1)
-        return -1;
-    else
-        return st.S[st.top];   
-}
-int Isempty(stack st)
+int isemptyStack(struct Stack st)
 {
     if(st.top==-1)
         return 1;
     else
         return 0; 
 }
-int Isfull(stack st)
+int isFullStack(struct Stack st)
 {
     if(st.top==st.size-1)
         return 1;
     else
         return 0;   
 }
-int main(){
-    struct stack st;
-    create(&st);
-    push(&st,10);
-    push(&st,20);
-    push(&st,30);
-    push(&st,40);
-    push(&st,50);
-    //Display(st);
-    //pop(&st);
-    Display(st);
-    cout<<peek(st,2)<<"\n";
-    
-
-
-return 0;
-}
+#endif
