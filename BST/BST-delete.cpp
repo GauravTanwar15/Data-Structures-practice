@@ -158,3 +158,4 @@ int main()
  printf("element is not found\n");
  
  return 0;
+};
