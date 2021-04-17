@@ -63,8 +63,12 @@ struct Node * Search(int key)
 int main()
 {
     struct Node *temp;
-    struct Node *root=NULL;
- 
+ Insert(10);
+ Insert(20);
+ Insert(30);
+ Insert(40);
+ Insert(50);
+
 
  
  Inorder(root);
@@ -77,3 +81,4 @@ int main()
  printf("element is not found\n");
  
  return 0;
+};
