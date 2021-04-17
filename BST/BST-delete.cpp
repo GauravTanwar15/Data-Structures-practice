@@ -146,12 +146,12 @@ int main()
  RInsert(root,20);
  RInsert(root,30);
  
- Delete(root,30);
+ Delete(root,20);
  
  Inorder(root);
  printf("\n");
  
- temp=Search(20);
+ temp=Search(10);
  if(temp!=NULL)
  printf("element %d is found\n",temp->data);
  else
