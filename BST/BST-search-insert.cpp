@@ -62,14 +62,10 @@ struct Node * Search(int key)
 }
 int main()
 {
- struct Node *temp;
+    struct Node *temp;
+    struct Node *root=NULL;
  
- root=RInsert(root,50);
- RInsert(root,10);
- RInsert(root,40); RInsert(root,20);
- RInsert(root,30);
- 
- Delete(root,30);
+
  
  Inorder(root);
  printf("\n");
