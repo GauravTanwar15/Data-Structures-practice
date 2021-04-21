@@ -16,11 +16,16 @@ void Insert(int A[], int n)
 }
 
 int main(){
-    int H[] = {0,2,5,8,9,10,7}; 
-    Insert(H,2);
-    Insert(H,5);
-    Insert(H,8);
-    Insert(H,9);
+    int H[] = {0,2,5,8,9,10,7};
+
+    int i;
+    for ( i = 0; i <=7; i++)
+    {
+        Insert(H,i);
+    }
+     
+    
+    
 
 return 0;
 };
