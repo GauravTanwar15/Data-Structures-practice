@@ -16,13 +16,18 @@ void Insert(int A[], int n)
 }
 
 int main(){
-    int H[] = {0,2,5,8,9,10,7};
-
+    int H[] = {0,10,20,30,25,5,40,35};
+    //40,25,35,10,5,20,30
     int i;
-    for ( i = 0; i <=7; i++)
-    {
+    for ( i = 2; i <=7; i++)
         Insert(H,i);
+
+    for ( i = 1; i <=7; i++)
+    {
+        cout<<H[i]<<" ";
     }
+        
+    
      
     
     
