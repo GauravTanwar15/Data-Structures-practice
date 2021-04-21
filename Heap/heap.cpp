@@ -16,11 +16,15 @@ void Insert(int A[], int n)
 }
 
 
-void Delete(int A[], int n)
+int Delete(int A[], int n)
 {
-    int i,j,x,temp;
+    int i,j,x,temp,val;
+    val=A[1];
     x=A[n];
     A[1]=A[n];
+
+    A[n]=val;//this is storing elements at last place
+    
     i=1;
     j=i*2;//pointing to left child of i.
 
@@ -41,7 +45,7 @@ void Delete(int A[], int n)
     
     }
 
-    A[n]=x;
+    return val;
 
 }
 
@@ -51,6 +55,14 @@ int main(){
     int i;
     for ( i = 2; i <=7; i++)
         Insert(H,i);
+
+    
+    for ( i = 7; i>1; i--)
+    {
+        Delete(H,i);
+    }
+
+    cout<<"HEAP SORT:";
 
     for ( i = 1; i <=7; i++)
     {
