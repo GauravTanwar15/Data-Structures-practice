@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include<stdlib.h>
+#define INT_MAX
 void swap(int *x,int *y)
 {
  int temp=*x;
