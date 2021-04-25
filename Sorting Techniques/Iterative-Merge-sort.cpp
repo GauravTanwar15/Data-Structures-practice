@@ -1,5 +1,4 @@
-Merge Sort 
-#include <stdio.h>
+ #include <stdio.h>
 #include<stdlib.h>
 void swap(int *x,int *y)
 {
