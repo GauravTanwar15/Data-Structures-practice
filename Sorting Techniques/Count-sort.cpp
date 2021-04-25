@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include<stdlib.h>
-#define INT_MIN
 void swap(int *x,int *y)
 {
  int temp=*x;
@@ -30,19 +29,21 @@ void CountSort(int A[],int n)
  C[i]=0;
  }
  for(i=0;i<n;i++)
- {
- C[A[i]]++; }
+    {
+     C[A[i]]++;
+    }
  
- i=0;j=0;
+ i=0;
+ j=0;
  while(j<max+1)
  {
- if(C[j]>0)
- {
- A[i++]=j;
- C[j]--;
- }
- else
- j++;
+    if(C[j]>0)
+    {
+        A[i++]=j;
+        C[j]--;
+    }
+    else
+        j++;
  }
 }
 int main()
