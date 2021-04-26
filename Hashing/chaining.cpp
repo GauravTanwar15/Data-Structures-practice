@@ -22,7 +22,7 @@ int main()
  Insert(HT,22);
  Insert(HT,42);
  
- temp=Search(HT[hash(21)],21);
+ temp=Search(HT[hash(22)],22);
  
  printf("%d ",temp->data);
  
