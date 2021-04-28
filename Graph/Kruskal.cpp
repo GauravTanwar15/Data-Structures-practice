@@ -56,7 +56,7 @@ int main(int argc, const char * argv[])
  join(find(u),find(v)); 
  included[k]=1; 
  i++; 
- // printf("%d %d %d %d\n",u,v,find(u),find(v));
+ //printf("%d %d %d %d\n",u,v,find(u),find(v));
  
  } 
  else
@@ -67,7 +67,7 @@ int main(int argc, const char * argv[])
  printf("Spanning Tree\n"); 
  for(i=0;i<6;i++) 
  { 
- printf("(%d , %d)\n",t[0][i],t[1][i]); 
+ printf("(%d,%d)\n",t[0][i],t[1][i]); 
  } 
  return 0; 
 }
