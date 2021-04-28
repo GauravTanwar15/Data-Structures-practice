@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits.h>
 #define I INT_MAX
 using namespace std; 
 int cost[][8]= 
